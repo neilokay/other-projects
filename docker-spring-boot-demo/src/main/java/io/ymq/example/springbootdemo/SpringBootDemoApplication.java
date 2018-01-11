@@ -32,5 +32,4 @@ public class SpringBootDemoApplication {
         SpringApplication.run(SpringBootDemoApplication.class, args);
     }
 
-
 }
