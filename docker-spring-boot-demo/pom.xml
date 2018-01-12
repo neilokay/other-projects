@@ -60,8 +60,16 @@
                     <!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
                     <!-- 详见：https://github.com/spotify/docker-maven-plugin    Invalid repository name ... only [a-z0-9-_.] are allowed-->
                     <imageName>docker-spring-boot-demo</imageName>
+
+                    <!--不写Dockerfile 自动生成docker image-->
+                    <!--
                     <baseImage>java</baseImage>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    -->
+
+                    <!-- 指定Dockerfile所在的路径  生成docker image-->
+                    <dockerDirectory>${basedir}/src/main/resources/</dockerDirectory>
+
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
