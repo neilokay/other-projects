@@ -68,7 +68,7 @@
                     -->
 
                     <!-- 指定Dockerfile所在的路径  生成docker image-->
-                    <dockerDirectory>${basedir}/src/main/resources/</dockerDirectory>
+                    <dockerDirectory>${basedir}/src/main/resources</dockerDirectory>
 
                     <resources>
                         <resource>
