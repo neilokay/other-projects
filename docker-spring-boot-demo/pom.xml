@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>docker-spring-boot-demo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Docker 部署 SpringBoot 项目整合 Redis 镜像做访问计数Demo</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
