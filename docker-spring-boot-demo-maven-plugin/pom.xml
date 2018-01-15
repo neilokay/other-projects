@@ -52,7 +52,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.12</version>
                 <configuration>
-                    <imageName>spring-boot-demo-maven-plugin</imageName>
+                    <imageName>docker-spring-boot-demo-maven-plugin</imageName>
                     <baseImage>java</baseImage>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
