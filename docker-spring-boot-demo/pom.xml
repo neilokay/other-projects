@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-
+        <docker.image.prefix>souyunku</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -56,10 +56,22 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.12</version>
+
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+
                 <configuration>
                     <!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
                     <!-- 详见：https://github.com/spotify/docker-maven-plugin    Invalid repository name ... only [a-z0-9-_.] are allowed-->
-                    <imageName>souyunku/docker-spring-boot-demo</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 
                     <!--不写Dockerfile 自动生成docker image-->
                     <!--
