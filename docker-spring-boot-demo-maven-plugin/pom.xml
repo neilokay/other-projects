@@ -67,16 +67,37 @@
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>-->
+            </plugin>
+            -->
 
             <!-- 2：使用Dockerfile进行构建Docker镜像-->
+            <!--
+               <plugin>
+                  <groupId>com.spotify</groupId>
+                  <artifactId>docker-maven-plugin</artifactId>
+                  <version>0.4.12</version>
+                  <configuration>
+                      <imageName>docker-spring-boot-demo-maven-plugin</imageName>
+                      <dockerDirectory>${basedir}/src/main/resources</dockerDirectory>
+                      <resources>
+                          <resource>
+                              <targetPath>/</targetPath>
+                              <directory>${project.build.directory}</directory>
+                              <include>${project.build.finalName}.jar</include>
+                          </resource>
+                      </resources>
+                  </configuration>
+              </plugin>
+               -->
+
+            <!--3：将Docker镜像push到DockerHub上-->
 
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.12</version>
                 <configuration>
-                    <imageName>docker-spring-boot-demo-maven-plugin</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${basedir}/src/main/resources</dockerDirectory>
                     <resources>
                         <resource>
@@ -85,8 +106,11 @@
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
+                    <serverId>docker-hub</serverId>
+                    <registryUrl>https://index.docker.io/v1/</registryUrl>
                 </configuration>
             </plugin>
+
 
         </plugins>
     </build>
