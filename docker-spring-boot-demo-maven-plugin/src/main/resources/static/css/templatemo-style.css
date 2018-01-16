@@ -179,7 +179,7 @@ ul.countdown li h3
 		border-radius: 0px;
 		box-shadow: none;
 		height: 50px;
-		margin-top: 60px;
+		margin-top: 5px;
 		transition: all 0.4s ease-in-out;
 	}
 #countdown input[type="submit"]
