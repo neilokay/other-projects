@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <docker.image.prefix>neiltan</docker.image.prefix>
+        <docker.image.prefix>souyunku</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -46,8 +46,31 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- 2：使用Dockerfile进行构建Docker镜像-->
+            <!-- docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin -->
+
+            <!-- 1：使用插件构建Docker镜像-->
+
             <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.12</version>
+                <configuration>
+                    <imageName>docker-spring-boot-demo-maven-plugin</imageName>
+                    <baseImage>anapsix/alpine-java</baseImage>
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
+            <!-- 2：使用Dockerfile进行构建Docker镜像-->
+            <!--
+               <plugin>
                   <groupId>com.spotify</groupId>
                   <artifactId>docker-maven-plugin</artifactId>
                   <version>0.4.12</version>
@@ -62,7 +85,8 @@
                           </resource>
                       </resources>
                   </configuration>
-            </plugin>
+              </plugin>
+               -->
 
             <!--3：将Docker镜像push到DockerHub上-->
 

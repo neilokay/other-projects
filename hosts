@@ -1,8 +1,0 @@
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.17.30 swarm-manager
-192.168.17.31 swarm-node1
-192.168.17.32 swarm-node2
-192.168.17.33 swarm-node3
-192.168.17.34 swarm-node4
-192.168.17.35 swarm-node5
